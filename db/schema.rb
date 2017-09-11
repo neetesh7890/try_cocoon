@@ -25,13 +25,6 @@ ActiveRecord::Schema.define(version: 20170909110758) do
 
   add_index "attachments", ["property_id"], name: "index_attachments_on_property_id", using: :btree
 
-  create_table "projects", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "properties", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -39,39 +32,5 @@ ActiveRecord::Schema.define(version: 20170909110758) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.string   "description"
-    t.boolean  "done"
-    t.integer  "project_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
-
-  create_table "user_details", force: :cascade do |t|
-    t.text     "address"
-    t.string   "city"
-    t.integer  "pincode"
-    t.integer  "phone"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "email"
-    t.string   "password"
-    t.string   "gender"
-    t.date     "dob"
-    t.string   "avatar"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   add_foreign_key "attachments", "properties"
-  add_foreign_key "tasks", "projects"
-  add_foreign_key "user_details", "users"
 end

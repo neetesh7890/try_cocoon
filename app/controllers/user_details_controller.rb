@@ -1,4 +1,0 @@
-class UserDetailsController < ApplicationController
-
-  
-end
