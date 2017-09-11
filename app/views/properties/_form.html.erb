@@ -1,0 +1,27 @@
+<br><br>
+<%= form_for @property do |f| %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <br/>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <br/>
+    <%= f.text_field :description %>
+  </div>
+
+  <h3>Attachment</h3>
+  
+  <div id="attachments">  
+    <%= f.fields_for :attachments do |attachment| %>
+      <%= render 'attachment_fields', f: attachment %>
+      <div class="links">
+        <%= link_to_add_association 'Add', f, :attachments %>
+      </div>
+    <% end %>
+  </div>
+      <%= f.button :submit %>
+<%end%>
